@@ -9,15 +9,18 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
 model student {
-  id Int @id @default(autoincrement())
-  fullname String
-  stream String
-  division String
-  idno  String
-  gender String
-  subcity String
-  woreda  String
-  phonenumber String
-  profilephoto String
+  id            Int      @id @default(autoincrement())
+  fullname      String
+  stream        String
+  division      String
+  idno          String
+  gender        String
+  subcity       String
+  woreda        String
+  phonenumber   String
+  profilephoto  String
+
+  @@map("students") // Optionally, you can customize the table name
 }

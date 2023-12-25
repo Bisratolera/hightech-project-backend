@@ -21,11 +21,10 @@ app.use("/api/v1", routes);
 app.use("/uploads", express.static("uploads"));
 
 app.get("/", (req, res) => {
-  // res.json({
-  //   status: "running...",
-  //   message: "docs API can be found at /api-docs",
-  // }).stringfy;
-  res.send("hello")
+  res.json({
+    status: "running...",
+    message: "docs API can be found at /api-docs",
+  }).stringfy;
 });
 
 async function connectToDb() {
