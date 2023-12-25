@@ -21,6 +21,6 @@ model student {
   woreda        String
   phonenumber   String
   profilephoto  String
-
-  @@map("students") // Optionally, you can customize the table name
+  created_at    DateTime @default(now())
+  updated_at   DateTime  @updatedAt
 }

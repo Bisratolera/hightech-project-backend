@@ -1,49 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const { PrismaClient } = require('@prisma/client');
+const studentController = require('../controllers/studentController');
 
 const prisma = new PrismaClient();
 
-// Create a new student
-router.post('/students', async (req, res) => {
-  try {
-    const student = await prisma.student.create({
-      data: req.body,
-    });
-    res.status(201).json(student);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
+router.post('/student/create', studentController.Signup)
 // Get all students
 router.get('/students', async (req, res) => {
   try {
     const students = await prisma.student.findMany();
     res.json(students);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
 
-// Get a specific student by ID
-router.get('/students/:id', async (req, res) => {
-  const { id } = req.params;
-  try {
-    const student = await prisma.student.findUnique({
-      where: { id: parseInt(id) },
-    });
-    if (!student) {
-      return res.status(404).json({ error: 'Student not found' });
-    }
-    res.json(student);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
+
 
 // Update a student by ID
 router.put('/students/:id', async (req, res) => {

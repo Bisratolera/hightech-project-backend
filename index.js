@@ -39,7 +39,7 @@ async function connectToDb() {
 
 connectToDb();
 
-// const server = http.createServer(app);
+const server = http.createServer(app);
 
 server.listen(PORT, () => {
   console.log("Server started running on: " + " " + "http://localhost:" + PORT);
